@@ -1,0 +1,18 @@
+{
+  "name": "create-server-in-node-js-and-callback-function-javascript",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.0",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.21",
+    "nodemon": "^3.1.7"
+  }
+}
