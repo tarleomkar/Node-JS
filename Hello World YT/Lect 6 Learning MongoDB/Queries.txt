@@ -1,0 +1,188 @@
+Microsoft Windows [Version 10.0.22621.4169]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\HP>mongod --version
+'mongod' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\HP>mongosh
+Current Mongosh Log ID: 670698cfeb3738acad86b01c
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2
+Using MongoDB:          8.0.0
+Using Mongosh:          2.3.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-10-09T20:14:16.586+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> exit
+
+C:\Users\HP>mongosh
+Current Mongosh Log ID: 670699f03f2e868e9686b01c
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2
+Using MongoDB:          8.0.0
+Using Mongosh:          2.3.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-10-09T20:14:16.586+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> mongo
+ReferenceError: mongo is not defined
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+mmyyDb   8.00 KiB
+test> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    40.00 KiB
+mmyyDb    8.00 KiB
+myDb      8.00 KiB
+test> use myDb
+switched to db myDb
+myDb> show collections
+myTable
+myDb> db.createCollection()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Database.createCollection)
+myDb> db.createCollection("users");
+{ ok: 1 }
+myDb> show collections
+myTable
+users
+myDb> db.users.insertOne({ id: 1, username: 'Alice', age: 25});
+{
+  acknowledged: true,
+  insertedId: ObjectId('67069c093f2e868e9686b01d')
+}
+myDb> db.users.find();
+[
+  {
+    _id: ObjectId('67069c093f2e868e9686b01d'),
+    id: 1,
+    username: 'Alice',
+    age: 25
+  }
+]
+myDb> db.users.inserOne({id: 1, username: 'Omkar', age: 21});
+TypeError: db.users.inserOne is not a function
+myDb> db.users.insertOne({ id: 1, username: 'Omkar', age: 21});
+{
+  acknowledged: true,
+  insertedId: ObjectId('67069c963f2e868e9686b01e')
+}
+myDb> db.users.find();
+[
+  {
+    _id: ObjectId('67069c093f2e868e9686b01d'),
+    id: 1,
+    username: 'Alice',
+    age: 25
+  },
+  {
+    _id: ObjectId('67069c963f2e868e9686b01e'),
+    id: 1,
+    username: 'Omkar',
+    age: 21
+  }
+]
+myDb> exit
+
+C:\Users\HP>mongosh
+Current Mongosh Log ID: 67069cc0cfb5a57d9e86b01c
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2
+Using MongoDB:          8.0.0
+Using Mongosh:          2.3.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-10-09T20:14:16.586+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    40.00 KiB
+mmyyDb    8.00 KiB
+myDb     80.00 KiB
+test> use myDb
+switched to db myDb
+myDb> show collections
+myTable
+users
+myDb> users.find();
+ReferenceError: users is not defined
+myDb> myDb.users.find();
+ReferenceError: myDb is not defined
+myDb> db.users.find();
+[
+  {
+    _id: ObjectId('67069c093f2e868e9686b01d'),
+    id: 1,
+    username: 'Alice',
+    age: 25
+  },
+  {
+    _id: ObjectId('67069c963f2e868e9686b01e'),
+    id: 1,
+    username: 'Omkar',
+    age: 21
+  }
+]
+myDb> db.users.find({age: {$gt: 21}});
+[
+  {
+    _id: ObjectId('67069c093f2e868e9686b01d'),
+    id: 1,
+    username: 'Alice',
+    age: 25
+  }
+]
+myDb> db.users.updateOne({username: 'Alice'}, {$set: {age: 22}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+myDb> db.users.find();
+[
+  {
+    _id: ObjectId('67069c093f2e868e9686b01d'),
+    id: 1,
+    username: 'Alice',
+    age: 22
+  },
+  {
+    _id: ObjectId('67069c963f2e868e9686b01e'),
+    id: 1,
+    username: 'Omkar',
+    age: 21
+  }
+]
+myDb> db.users.deleteone({id: 1})
+TypeError: db.users.deleteone is not a function
+myDb> db.users.deleteOne({id: 1})
+{ acknowledged: true, deletedCount: 1 }
+myDb> db.users.find();
+[
+  {
+    _id: ObjectId('67069c963f2e868e9686b01e'),
+    id: 1,
+    username: 'Omkar',
+    age: 21
+  }
+]
+myDb> exit
+
+C:\Users\HP>
