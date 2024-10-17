@@ -1,0 +1,1 @@
+In Node.js, authentication is the process of verifying a user's identity (e.g., login with username and password), and authorization is the process of determining what actions or resources the authenticated user has access to.
